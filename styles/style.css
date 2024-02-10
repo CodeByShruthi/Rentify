@@ -98,7 +98,6 @@ body {
 .main-img {
   width: 550px;
   height: 450px;
-  border: 5px solid #000000;
   /* border-radius: 20px; */
 }
 
@@ -133,3 +132,19 @@ body {
 }
 
 /* ABOUT US  */
+
+.contact-box {
+  border: 1px solid red;
+}
+.contact_col-1 {
+}
+.contact_logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.contact-logo {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+}
