@@ -27,7 +27,7 @@
                 <li><a class="link-text" href="#contact">CONTACT US</a></li>
                 <li><a class="link-text" href="#sign-in">SIGN IN</a></li>
                 <li>
-                  <a class="link" href="#"
+                  <a class="link" href="./sign/index.html"
                     ><button class="signup-btn">REGISTER</button></a
                   >
                 </li>
@@ -75,6 +75,39 @@
         </div>
       </div>
     </div>
+    <div id="gallery">
+      <div class="headline-box">
+        <h1 class="headline">GALLERY</h1>
+      </div>
+      <div class="gallery-box">
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+          <!-- Full-width images with number and caption text -->
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="./images/img-1.avif" style="width: 100%" />
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 4</div>
+            <img src="./images/img-2.avif" style="width: 100%" />
+          </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 4</div>
+            <img src="./images/img-3.jpg" style="width: 100%" />
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">4 / 4</div>
+            <img src="./images/img-4.jpg" style="width: 100%" />
+          </div>
+
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </div>
+    </div>
 
     <div id="contact">
       <div class="headline-box">
@@ -111,14 +144,14 @@
             <h1>Sign In</h1>
             <form action="">
               <div class="input-group">
-                <div class="input-field">
+                <!-- <div class="input-field">
                   <i class="fa-solid fa-user"></i>
                   <input
                     type="text"
                     name=""
                     id=""
                     placeholder="Enter Your username" />
-                </div>
+                </div> -->
                 <div class="input-field">
                   <i class="fa-solid fa-envelope"></i>
                   <input
@@ -144,7 +177,7 @@
         </div>
       </div>
     </div>
-
+    <script src="./src/slide_show.js"></script>
     <script
       src="https://kit.fontawesome.com/62713cab29.js"
       crossorigin="anonymous"></script>

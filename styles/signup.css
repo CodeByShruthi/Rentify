@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url(../images/background.jpg);
+  /* opacity: 0.5; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_contact_col-2 {
+  width: 50%;
+  padding: 100px;
+}
+.sign_form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+.sign_form-box h1 {
+  font-size: 30px;
+  margin-bottom: 60px;
+}
+.fa-solid {
+  color: #000000;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 30px;
+}
+.input-field {
+  display: flex;
+  background-color: #eaeaea;
+  margin: 15px 0;
+  border-radius: 3px;
+}
+input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 20px 160px 20px 10px;
+}
+.btn-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.btn-field button {
+  padding: 10px 35px;
+  text-align: center;
+  margin: 20px 10px;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.btn-field button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
