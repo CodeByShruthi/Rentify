@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="service_in-box">
         <div class="service-tabs">
           <div class="service">
-            <a href="./service1.php"><img class="service-img" src="./images/rental_assistant.jpg" /></a>
+            <img class="service-img" src="./images/rental_assistant.jpg" />
             <p class="service-name">RentFind</p>
           </div>
           <div class="service">
@@ -111,6 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p class="service-name">PropAdvice</p>
           </div>
         </div>
+        <a href="./apartment.php">Apartment</a>
+        <a href="./tenants.php">tenants</a>
+        <a href="./landlords.php">landlords</a>
+        <a href="./rental_agreements.php">RentalAgreements</a>
       </div>
     </div>
   </div>
