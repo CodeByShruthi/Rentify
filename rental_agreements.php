@@ -1,6 +1,73 @@
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data and sanitize inputs
+    $apartment_id = $_POST['apartment_id'];
+    $tenant_id = $_POST['tenant_id'];
+    $landlord_id = $_POST['landlord_id'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $rent_amount = $_POST['rent_amount'];
+    $payment_status = $_POST['payment_status'];
+
+    // Database connection parameters
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "rentify_db";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Check if the entered ApartmentID, TenantID, and LandlordID exist in their respective tables
+    $check_apartment_query = "SELECT * FROM apartments WHERE ApartmentID = $apartment_id";
+    $check_tenant_query = "SELECT * FROM tenants WHERE TenantID = $tenant_id";
+    $check_landlord_query = "SELECT * FROM landlords WHERE LandlordID = $landlord_id";
+
+    $apartment_result = $conn->query($check_apartment_query);
+    $tenant_result = $conn->query($check_tenant_query);
+    $landlord_result = $conn->query($check_landlord_query);
+
+    if ($apartment_result->num_rows === 0 || $tenant_result->num_rows === 0 || $landlord_result->num_rows === 0) {
+        die("Error: Invalid ApartmentID, TenantID, or LandlordID.");
+    }
+
+    // Prepare SQL statement to insert rental agreement data
+    $sql = "INSERT INTO RentalAgreements (ApartmentID, TenantID, LandlordID, StartDate, EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    // Check if the statement was prepared successfully
+    if ($stmt === FALSE) {
+        die("Error preparing statement: " . $conn->error);
+    }
+
+    // Bind parameters
+    $stmt->bind_param("iiissss", $apartment_id, $tenant_id, $landlord_id, $start_date, $end_date, $rent_amount, $payment_status);
+
+    // Execute the SQL statement
+    if ($stmt->execute() === TRUE) {
+        echo "New rental agreement added successfully.";
+        header('location:rental_agreements.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close prepared statement and database connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+
+
+<!-- <?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve form data
   $apartment_id = $_POST['apartment_id'];
   $tenant_id = $_POST['tenant_id'];
@@ -22,9 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   } // Prepare SQL statement to insert rental agreement into the database
-  $sql = "INSERT INTO RentalAgreements (ApartmentID, TenantID, LandlordID, StartDate,
+  $sql = "INSERT INTO rentalagreements (ApartmentID, TenantID, LandlordID, StartDate,
 EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
+  if ($stmt === FALSE) {
+    die("Error: " . $conn->error);
+}
   $stmt->bind_param(
     "iiisss",
     $apartment_id,
@@ -37,7 +107,10 @@ EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
   );
   // Executethe SQL statement 
   if ($stmt->execute() === TRUE) {
-    echo "Rental agreementcreated successfully.";
+    echo '<script>';
+    echo 'alert("Rental agreement created successfully!");';
+    echo 'window.location.href = "index.php";';
+    echo '</script>';
   } else {
     echo "Error: " . $sql . "<br />" . $conn->error;
   }
@@ -45,7 +118,7 @@ EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
   $stmt->close();
   $conn->close();
 }
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,14 +126,15 @@ EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Add Rental Agreements</title>
+  <link rel="stylesheet" href="./styles/service.css" />
 </head>
 
 <body>
   <div class="serv_out-box">
     <div class="serv_in-box">
       <div class="serv_form-box">
-        <h1>service 1</h1>
+        <h1 class="serv_heading">ADD RENTAL AGREEMENTS</h1>
         <form action="rental_agreements.php" method="POST">
           <label for="apartment_id">Apartment ID:</label><br />
           <input type="number" id="apartment_id" name="apartment_id" required /><br />
@@ -86,7 +160,7 @@ EndDate, RentAmount, PaymentStatus) VALUES (?, ?, ?, ?, ?, ?, ?)";
             <option value="Unpaid">Unpaid</option>
           </select><br /><br />
 
-          <input type="submit" value="Create Rental Agreement" />
+          <button type="submit" value="Create Rental Agreement">submit</button>
         </form>
       </div>
     </div>

@@ -5,4 +5,58 @@
 }
 body {
   font-family: "Saira", sans-serif;
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+.serv_out-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.serv_in-box {
+  padding: 50px 80px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.serv_heading {
+  font-size: 25px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+label {
+}
+input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+select {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 5px 15px;
+  text-align: center;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
 }

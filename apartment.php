@@ -27,14 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare SQL statement to insert apartment data into the database
-    $sql = "INSERT INTO Apartments (ApartmentName, Address, City, State, ZipCode, NumBedrooms, NumBathrooms, RentAmount, Availability) 
+    $sql = "INSERT INTO apartments (ApartmentName, Address, City, State, ZipCode, NumBedrooms, NumBathrooms, RentAmount, Availability) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssiidi", $apartment_name, $address, $city, $state, $zip_code, $num_bedrooms, $num_bathrooms, $rent_amount, $availability);
 
     // Execute the SQL statement
     if ($stmt->execute() === TRUE) {
-        echo "New apartment added successfully";
+      echo '<script>';
+      echo 'alert("Apartment added successfully!");';
+      echo 'window.location.href = "index.php";';
+      echo '</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -60,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Add Apartments</title>
     <link rel="stylesheet" href="./styles/service.css" />
   </head>
 
@@ -68,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="serv_out-box">
       <div class="serv_in-box">
         <div class="serv_form-box">
-          <h1>service 1</h1>
+          <h1 class="serv_heading">ADD APARTMENTS</h1>
           <form action="apartment.php" method="POST">
             <label for="apartment_name">Apartment Name:</label><br />
             <input
@@ -107,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <option value="1">Available</option>
               <option value="0">Not Available</option></select
             ><br /><br />
-            <input type="submit" value="Add Apartment" />
+            <button type="submit" value="Add Apartment">submit</button>
           </form>
         </div>
       </div>

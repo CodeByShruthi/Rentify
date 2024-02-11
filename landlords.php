@@ -25,14 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Prepare SQL statement to insert data into the Landlords table
-        $sql = "INSERT INTO Landlords (LandlordName, Email, Phone) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO landlords (LandlordName, Email, Phone) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $landlord_name, $landlord_email, $landlord_phone);
 
         // Execute the SQL statement
         if ($stmt->execute() === TRUE) {
             // Landlord added successfully
-            echo "Landlord added successfully.";
+            echo '<script>';
+            echo 'alert("landlord added sucessfully!");';
+            echo 'window.location.href = "index.php";';
+            echo '</script>';
         } else {
             // Error occurred
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -51,14 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Landlords</title>
 </head>
 <body>
     
 <div class="serv_out-box">
       <div class="serv_in-box">
         <div class="serv_form-box">
-          <h1>service 1</h1>
+          <h1 class="serv_heading">ADD LANDLORDS</h1>
 
 <form action="landlords.php" method="POST">
         <label for="landlord_name">Landlord Name:</label><br>
@@ -67,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="email" id="landlord_email" name="landlord_email" required><br>
         <label for="landlord_phone">Phone:</label><br>
         <input type="text" id="landlord_phone" name="landlord_phone" required><br><br>
-        <input type="submit" value="Add Landlord">
+        <button type="submit" value="Add Landlord">submit</button>
     </form>
     </div>
       </div>

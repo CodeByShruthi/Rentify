@@ -23,13 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare SQL statement to insert tenant data
-    $sql = "INSERT INTO Tenants (TenantName, Email, Phone, MoveInDate, MoveOutDate) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tenants (TenantName, Email, Phone, MoveInDate, MoveOutDate) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $tenant_name, $email, $phone, $move_in_date, $move_out_date);
 
     // Execute the SQL statement
     if ($stmt->execute() === TRUE) {
-        echo "New tenant added successfully.";
+        echo '<script>';
+        echo 'alert("Tenant addedd successfully!");';
+        echo 'window.location.href = "index.php";';
+        echo '</script>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -48,14 +51,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Tenants</title>
+    <link rel="stylesheet" href="./styles/service.css" />
 </head>
 
 <body>
     <div class="serv_out-box">
         <div class="serv_in-box">
             <div class="serv_form-box">
-                <h1>service 1</h1>
+                <h1 class="serv_heading">ADD TENANTS</h1>
                 <form action="tenants.php" method="POST">
                     <label for="tenant_name">Tenant Name:</label><br>
                     <input type="text" id="tenant_name" name="tenant_name" required><br>
@@ -67,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="date" id="move_in_date" name="move_in_date" required><br>
                     <label for="move_out_date">Move-Out Date:</label><br>
                     <input type="date" id="move_out_date" name="move_out_date"><br><br>
-                    <input type="submit" value="Add Tenant">
+                    <button type="submit" value="Add Tenant">submit</button>
                 </form>
             </div>
         </div>

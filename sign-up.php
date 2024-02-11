@@ -72,15 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<div class="input-group">
 						<div class="input-field">
 							<i class="fa-solid fa-user"></i>
-							<input type="text" name="username" id="" placeholder="Enter Your username" />
+							<input type="text" name="username" id="" placeholder="Enter Your username" required/>
 						</div>
 						<div class="input-field">
 							<i class="fa-solid fa-envelope"></i>
-							<input type="email" name="email" id="" placeholder="Enter Your email" />
+							<input type="email" name="email" id="" placeholder="Enter Your email" required/>
 						</div>
 						<div class="input-field">
 							<i class="fa-solid fa-lock"></i>
-							<input type="password" name="password" id="" placeholder="Enter Your password" />
+							<input type="password" name="password" id="" placeholder="Enter Your password" required/>
 						</div>
 					</div>
 						<div class="comment-box">
