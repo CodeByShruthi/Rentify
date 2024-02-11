@@ -1,6 +1,6 @@
 <?php
 
-$sucess = 0;
+$success = 0;
 $user = 0;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,7 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$result = mysqli_query($con, $sql);
 		if ($result) {
 			// echo "Sign Up Successfully";
-			$sucess = 1;
+			$success = 1;
+			session_start();
+			$_SESSION["username"] = $username;
+			$_SESSION["email"] = $email;
+			$_SESSION["password"] = $password;
+			
+			echo '<script>';
+			echo 'alert("Sign in successful!");';
+			echo 'window.location.href = "index.php";';
+			echo '</script>';
+			// header('location:index.php');
 		} else {
 			die(mysqli_error($con));
 		}
@@ -51,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-	<link rel="stylesheet" href="./styles/sign-up.css" />
+	<link rel="stylesheet" href="./styles/sign-up2.css" />
 </head>
 
 <body>
@@ -77,13 +87,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						<div class="comment-box">
 							<?php
 							if ($user == 1) {
-							echo "<div class='comment-warn'>User already exists</div>";
+								echo '<script>';
+								echo 'alert("user already exist!");';
+								echo 'window.location.href = "sign-up.php";';
+								echo '</script>';
 							}
-							
-                            if ($sucess == 1) {
-                                echo "<div class='comment-succ'>Sign Up Successfully</div>";
+
+                            if ($success == 1) {
+								echo '<script>';
+								echo 'alert("Sign up successfull!");';
+								echo 'window.location.href = "index.php";';
+								echo '</script>';
                             }
                             ?>
+							<a class="go-to" href="./index.php#contact">Already have an account ?</a>
                 		</div>
 					<div class="btn-field">
 						<button type="submit">Sign Up</button>

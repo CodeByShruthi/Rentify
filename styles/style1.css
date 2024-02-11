@@ -341,3 +341,7 @@ input {
   color: greenyellow;
   letter-spacing: 1px;
 }
+.go-to {
+  color: blue;
+  font-size: 15px;
+}

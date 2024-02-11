@@ -1,7 +1,7 @@
 <?php
 
-$sucess = 0;
-$user = 0;
+$login = 0;
+$invalid = 0; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   include 'connect.php';
@@ -23,20 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   $sql = "SELECT * FROM signup WHERE username = '$username' AND email = '$email' AND password = '$password'";
-
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result) > 0) {
-    // echo "username already exists";
-    $user = 1;
+    $login = 1;
   } else {
-    $sql = "INSERT INTO `signup` (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
-    $result = mysqli_query($con, $sql);
-    if ($result) {
-      // echo "Sign Up Successfully";
-      $sucess = 1;
-    } else {
-      die(mysqli_error($con));
-    }
+    $invalid = 1;
   }
 }
 ?>
@@ -58,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/style1.css" />
 </head>
 
 <body>
@@ -77,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <li><a class="link-text" href="#contact">CONTACT US</a></li>
               <li><a class="link-text" href="#sign-in">SIGN IN</a></li>
               <li>
-                <a class="link" href="./sign/sign-up.html"><button class="signup-btn">REGISTER</button></a>
+                <a class="link" href="./sign-up.php"><button class="signup-btn">REGISTER</button></a>
               </li>
             </ul>
           </nav>
@@ -207,24 +198,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="comment-box">
               <?php
-              if ($user == 1) {
-                echo "<div class='comment-warn'>User already exists</div>";
+              if ($invalid == 1) {
+                echo '<script>';
+								echo 'alert("Invalid username or password!");';
+								echo 'window.location.href = "index.php";';
+								echo '</script>';
               }
 
-              if ($sucess == 1) {
-                echo "<div class='comment-succ'>Sign Up Successfully</div>";
+              if ($login == 1) {
+                echo '<script>';
+								echo 'alert("login successfull!");';
+								echo 'window.location.href = "index.php";';
+								echo '</script>';
               }
               ?>
+              <a class="go-to" href="./sign-up.php">Create an account</a>
             </div>
             <div class="btn-field">
-              <button type="button">Sign In</button>
+              <button type="submit">Sign In</button> 
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <script src="./src/slide_show.js"></script>
+  <script src="./src/slide_show1.js"></script>
   <script src="https://kit.fontawesome.com/62713cab29.js" crossorigin="anonymous"></script>
 </body>
 
