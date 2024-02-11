@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // }
 
 
-  $sql = "SELECT * FROM signup WHERE username = '$username' AND email = '$email' AND password = '$password'";
+  $sql = "SELECT * FROM signup WHERE username = '$username' AND email = '$email'";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result) > 0) {
     $login = 1;
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="service_in-box">
         <div class="service-tabs">
           <div class="service">
-            <img class="service-img" src="./images/rental_assistant.jpg" />
+            <a href="./service1.php"><img class="service-img" src="./images/rental_assistant.jpg" /></a>
             <p class="service-name">RentFind</p>
           </div>
           <div class="service">
