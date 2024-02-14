@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles/style1.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
 
 <body>
@@ -95,26 +95,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="service_in-box">
         <div class="service-tabs">
           <div class="service">
+          <a class="service-name" href="./index_apartment.php">
             <img class="service-img" src="./images/rental_assistant.jpg" />
-            <p class="service-name">RentFind</p>
+            <p>Appartment</p>
+            </a>
           </div>
           <div class="service">
+             <a class="service-name" href="./index_apartment.php">
             <img class="service-img" src="./images/prop_managment.jpg" />
-            <p class="service-name">PropManage</p>
+            <p>PropManage</p>
+             </a>
           </div>
           <div class="service">
+             <a class="service-name" href="./index_apartment.php">
             <img class="service-img" src="./images/tenet_match.jpg" />
-            <p class="service-name">TenanntMatch</p>
+            <p>TenanntMatch</p>
+             </a>
           </div>
           <div class="service">
+             <a class="service-name" href="./index_apartment.php">
             <img class="service-img" src="./images/prop_advice.webp" />
-            <p class="service-name">PropAdvice</p>
+            <p>PropAdvice</p>
+             </a>
           </div>
         </div>
-        <a href="./apartment.php">Apartment</a>
-        <a href="./tenants.php">tenants</a>
-        <a href="./landlords.php">landlords</a>
-        <a href="./rental_agreements.php">RentalAgreements</a>
       </div>
     </div>
   </div>

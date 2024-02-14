@@ -135,6 +135,13 @@ body {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.service-name:hover {
+  color: #1a53ff;
+  letter-spacing: 10px;
 }
 /* SLIDE SHOW */
 
