@@ -95,25 +95,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <div class="service_in-box">
         <div class="service-tabs">
           <div class="service">
-          <a class="service-name" href="./index_apartment.php">
+          <a class="service-name" href="./apartment.php">
             <img class="service-img" src="./images/rental_assistant.jpg" />
             <p>Appartment</p>
             </a>
           </div>
           <div class="service">
-             <a class="service-name" href="./index_apartment.php">
+             <a class="service-name" href="./landlords.php">
             <img class="service-img" src="./images/prop_managment.jpg" />
             <p>PropManage</p>
              </a>
           </div>
           <div class="service">
-             <a class="service-name" href="./index_apartment.php">
+             <a class="service-name" href="./tenants.php">
             <img class="service-img" src="./images/tenet_match.jpg" />
             <p>TenanntMatch</p>
              </a>
           </div>
           <div class="service">
-             <a class="service-name" href="./index_apartment.php">
+             <a class="service-name" href="./rental_agreements.php  ">
             <img class="service-img" src="./images/prop_advice.webp" />
             <p>PropAdvice</p>
              </a>
